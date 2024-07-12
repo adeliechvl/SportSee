@@ -1,0 +1,37 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    height: 91px;
+    background-color: #020203;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    
+}
+
+header img {
+    width: 178px;
+    margin: 0 29px 0 29px;
+}
+
+.horizontal-nav {
+    font-family: "Roboto", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    display: flex; 
+    justify-content: space-evenly;
+    flex-grow: 1;
+}
+
+.horizontal-nav ul {
+    margin: 0;
+    padding: 0;
+    column-gap: 110px;
+    display: flex;
+    list-style-type: none;
+}
+
+.horizontal-nav ul li {
+    text-decoration: none;
+} 
