@@ -3,6 +3,8 @@ import proteinesImg from '../assets/proteinsIcon.svg'
 import carbsImg from '../assets/carbsIcon.svg'
 import lipidsImg from '../assets/fatIcon.svg'
 
+import '../styles/food-stats.css'
+
 export default function Foodstats(props) {
     return (
         <div className="food-stats">

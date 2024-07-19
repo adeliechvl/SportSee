@@ -5,6 +5,7 @@ import VerticalNav from '../../components/VerticalNav';
 import Dashboard from '../../components/Dashboard';
 
 import '../../styles/home.css'
+import '../../styles/container-data.css'
 
 export default function Home() {
     return (
