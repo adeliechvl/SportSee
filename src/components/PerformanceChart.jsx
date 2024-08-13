@@ -1,12 +1,12 @@
-import React from "react";
+import React from "react"
 import {
     Radar,
     RadarChart,
     PolarGrid,
     PolarAngleAxis,
     PolarRadiusAxis,
-    CartesianGrid
-} from "recharts";
+    CartesianGrid,
+} from "recharts"
 
 export default function PerformanceChart(props) {
     let newDataArray = []
@@ -19,12 +19,12 @@ export default function PerformanceChart(props) {
     )
 
     return (
-        <RadarChart cx={120} cy={120} outerRadius={80} width={258} height={263} data={newDataArray}>
+        <RadarChart outerRadius={60} width={200} height={200} data={newDataArray} >
             <CartesianGrid fill="#282D30" />
-            <PolarGrid />
-            <PolarAngleAxis dataKey="kind" />
-            <PolarRadiusAxis />
-            <Radar name="Mike" dataKey="value" stroke="#FFFFFF" fill="#FF0101" fillOpacity={0.7} />
+            <PolarGrid radialLines={false} />
+            <PolarAngleAxis dataKey="kind" stroke="#FFF" tickLine={false} />
+            <PolarRadiusAxis tick={false} axisLine={false} />
+            <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
         </RadarChart>
-    );
+    )
 }

@@ -1,23 +1,22 @@
 .food-stats {
     display: flex;
     flex-direction: column;
-    margin: 10px;
-
+    width: 30%;
 }
 
-.stats-block {
+.food-stat{
     display: flex;
     align-items: center;
     background-color: #FBFBFB;
     box-shadow: 0px 2px 4px 0px #00000005;
-    width: 258px;
-    height: 124px;
-    margin: 20px;
+    width: 210px;
+    height: 110px;
+    margin-bottom: 20px;
+    margin-left: 30px;
 }
 
-.stats-block img {
-    padding: 30px 30px;
-    opacity: 6,6%;
+.food-stats img {
+    padding: 20px 20px;
 }
 
 .stat-data {
@@ -27,11 +26,11 @@
 .food-data {
     color: #282D30;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .food-title {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     color: #74798C;
 }

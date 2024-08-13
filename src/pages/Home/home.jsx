@@ -11,13 +11,12 @@ export default function Home() {
     return (
         <>
             <HorizontalNav />
-            <div className="container">
+            <main>
                 <VerticalNav />
-                <main>
+                <div className='container'>
                     <Dashboard />
-                </main>
-            </div>
-
+                </div>
+            </main>
         </>
     )
 }

@@ -3,27 +3,17 @@ body {
 }
 
 main {
-    width: 100%;
-    flex-wrap: wrap;
-}
-
-.container,
-main {
     display: flex;
-}
-
-main .user-infos {
-    margin: 68px 0 0 110px;
 }
 
 .user-infos {
     height: 120px;
-    width: 100%;
+    margin: 40px 0 0 5%;
 }
 
 h1 {
     margin: 0;
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 500;
     line-height: 24px;
 }
@@ -33,7 +23,13 @@ h1 {
 }
 
 .user-infos p {
-    margin-top: 41px;
-    font-size: 18px;
+    margin-top: 30px;
+    font-size: 15px;
     font-weight: 400;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 92%
 }

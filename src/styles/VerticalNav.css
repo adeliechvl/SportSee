@@ -1,6 +1,6 @@
 .vertical-nav {
-    width: 117px;
-    height: 1024px;
+    width: 8%;
+    height: auto;
     background-color: #020203;
     box-shadow: 0px 4px 4px 0px #00000040;
     display: flex;
@@ -16,8 +16,8 @@
 }
 
 .vertical-nav img {
-    width: 32px;
-    height: 32px;
+    max-width: 30%;
+    height: 25px;
     background-color: white;
     padding: 12px;
     border-radius: 6px;

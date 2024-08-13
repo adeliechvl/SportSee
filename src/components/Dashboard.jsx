@@ -12,6 +12,11 @@ import SessionsChart from '../components/SessionsChart'
 import PerformanceChart from '../components/PerformanceChart'
 import ScoreChart from '../components/ScoreChart'
 
+import caloriesImg from '../assets/caloriesIcon.svg'
+import proteinesImg from '../assets/proteinsIcon.svg'
+import carbsImg from '../assets/carbsIcon.svg'
+import lipidsImg from '../assets/fatIcon.svg'
+
 export default function Dashboard() {
     const firstName = user.user.userInfos.firstName
     let calories = user.user.keyData.calorieCount
@@ -36,15 +41,26 @@ export default function Dashboard() {
             <UserInfos name={firstName} />
             <div className="container-data">
                 <section className="charts-container">
-                    <div className="activity-chart"><ActivityChart sessions={activitySessions} /></div>
-                    <section className="square-charts">
-                        <div className="sessions-chart"><SessionsChart sessions={durationSessions} /></div>
-                        <div className="performance-chart"><PerformanceChart performance={performanceData} /></div>
-                        <div className="chart score-chart"><ScoreChart score={score} /></div>
-                    </section>
+                    <div className="activity-chart">
+                        <ActivityChart sessions={activitySessions} />
+                    </div>
+                    <div className="square-charts">
+                        <div className="sessions-chart">
+                            <SessionsChart sessions={durationSessions} />
+                        </div>
+                        <div className="performance-chart">
+                            <PerformanceChart performance={performanceData} />
+                        </div>
+                        <div className="chart score-chart">
+                            <p className="score-chart-title">Score</p>
+                            <ScoreChart score={score} /></div>
+                    </div>
                 </section>
                 <section className="food-stats">
-                    <FoodStats calories={calories} proteines={proteines} carbs={carbs} lipids={lipids} />
+                    <FoodStats img={caloriesImg} alt="Calories icon" stat={calories} title="Calories" unit="kCal" />
+                    <FoodStats img={proteinesImg} alt="Proteines icon" stat={proteines} title="Protéines" unit="g" />
+                    <FoodStats img={carbsImg} alt="Carbs icon" stat={carbs} title="Glucides" unit="g" />
+                    <FoodStats img={lipidsImg} alt="Lipids icon" stat={lipids} title="Lipides" unit="g" />
                 </section>
             </div>
         </>

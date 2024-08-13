@@ -1,37 +1,35 @@
 header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    
-    height: 91px;
+    height: 10%;
     background-color: #020203;
     box-shadow: 0px 4px 4px 0px #00000040;
-    
 }
 
 header img {
-    width: 178px;
-    margin: 0 29px 0 29px;
+    width: 130px;
+    margin: 10px 29px 10px 29px;
 }
 
 .horizontal-nav {
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%;
+    padding-left: 10%;
     font-family: "Roboto", sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 500;
     color: white;
-    display: flex; 
-    justify-content: space-evenly;
-    flex-grow: 1;
 }
 
 .horizontal-nav ul {
-    margin: 0;
+    width: 90%;
     padding: 0;
-    column-gap: 110px;
+    column-gap: 20%;
     display: flex;
     list-style-type: none;
 }
 
 .horizontal-nav ul li {
     text-decoration: none;
-} 
+}
