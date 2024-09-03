@@ -86,17 +86,20 @@ h2.chart-title {
     justify-content: center;
 }
 
+.sessions-chart .recharts-cartesian-grid-horizontal {
+    display: none;
+}
+
 /* PERFORMANCE CHART */
 .performance-chart tspan {
     font-size: 9px;
-    margin: 15px;
 }
 
 /* SCORE CHART */
 .score-chart {
     position: relative;
     background-color: #FBFBFB;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .score-chart-title {

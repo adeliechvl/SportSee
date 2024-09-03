@@ -1,30 +1,72 @@
-import React from "react"
+import React, { useEffect, useState } from 'react'
+import dataMock from '../utils/dataMockPerformance.js'
 import {
     Radar,
     RadarChart,
     PolarGrid,
     PolarAngleAxis,
     PolarRadiusAxis,
-    CartesianGrid,
 } from "recharts"
 
-export default function PerformanceChart(props) {
+export default function PerformanceChart({ id }) {
+
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                setLoading(true);
+                const result = await dataMock(id);
+                setData(result);
+            } catch (err) {
+                setError('Failed to fetch performance data.');
+                console.error('Error fetching performance data:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        getData();
+    }, [id]);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
+    if (!data) {
+        return null;
+    }
+
     let newDataArray = []
-    const data = props.performance.data
-    data.map((element) =>
+    for (const property in data.data.data) {
         newDataArray.push({
-            "kind": props.performance.kind[element.kind],
-            "value": element.value
+            kind: data.data.translatedKinds[data.data.data[property].kind],
+            value: data.data.data[property].value,
         })
-    )
+    }
 
     return (
-        <RadarChart outerRadius={60} width={200} height={200} data={newDataArray} >
-            <CartesianGrid fill="#282D30" />
-            <PolarGrid radialLines={false} />
-            <PolarAngleAxis dataKey="kind" stroke="#FFF" tickLine={false} />
-            <PolarRadiusAxis tick={false} axisLine={false} />
-            <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
-        </RadarChart>
-    )
+        <div style={{ width: 200, height: 200 }}>
+            <RadarChart
+                cx={95}
+                cy={100}
+                outerRadius={55}
+                width={200}
+                height={200}
+                data={newDataArray}
+                style={{ backgroundColor: "#282D30", borderRadius: "5px" }}
+            >
+                <PolarGrid radialLines={false} />
+                <PolarAngleAxis dataKey="kind" stroke="#FFF" tickLine={false} />
+                <PolarRadiusAxis tick={false} axisLine={false} />
+                <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
+            </RadarChart>
+        </div>
+    );
 }

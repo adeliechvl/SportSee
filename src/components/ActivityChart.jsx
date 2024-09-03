@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from 'react'
+import dataMock from '../utils/dataMockActivity.js'
 import {
     ResponsiveContainer,
     BarChart,
@@ -10,7 +11,41 @@ import {
     Bar,
 } from 'recharts'
 
-export default function ActivityChart(props) {
+export default function ActivityChart({ id }) {
+
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                setLoading(true);
+                const result = await dataMock(id);
+                setData(result);
+            } catch (err) {
+                setError('Failed to fetch activity data.');
+                console.error('Error fetching activity data:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        getData();
+    }, [id]);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
+    if (!data) {
+        return null;
+    }
+
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
@@ -24,12 +59,17 @@ export default function ActivityChart(props) {
         return null
     }
 
+    const sessionsWithIndex = data.data.sessions.map((session, index) => ({
+        ...session,
+        index: index + 1
+    }))
+
     return (
         <>
             <h2 className='chart-title'>Activité quotidienne</h2>
             <ResponsiveContainer width="100%" height="100%" aspect={3}>
                 <div style={{ backgroundColor: "#FBFBFB", padding: "70px 20px 30px", borderRadius: "10px" }}>
-                    <BarChart width={600} height={180} data={props.sessions}>
+                    <BarChart width={600} height={180} data={sessionsWithIndex}>
                         <CartesianGrid stroke="#DEDEDE" strokeDasharray={3} />
                         <XAxis tickLine={false} stroke="#DEDEDE" tick={{ stroke: "#9B9EAC", strokeWidth: 0.5 }} />
                         <YAxis yAxisId="left" orientation="left" hide />
